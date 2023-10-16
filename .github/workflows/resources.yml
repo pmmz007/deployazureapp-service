@@ -10,5 +10,8 @@ jobs:
       uses: Azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: list azure account
+      run: |
+        az account list -o table
 
   
