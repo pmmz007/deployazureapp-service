@@ -1,10 +1,11 @@
 name: build azure resources
 on:
-  push: main
+  push: 
+    branches: main
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Azure Login
-        uses: Azure/login@v1
+    - name: Azure Login
+      uses: Azure/login@v1
   
