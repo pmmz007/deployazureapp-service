@@ -12,12 +12,12 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: list azure account
-      run: |
-        az account list -o table
+    - name: List azure account info
+      uses: azure/CLI@v1
+      with:
+          inlineScript: |
+            az account list -o table
 
-    - name: create resource group
-      run: |
-        az group list -o table | grep github-rg
+
 
   
