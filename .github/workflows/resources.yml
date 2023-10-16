@@ -29,8 +29,7 @@ jobs:
       with:
           inlineScript: |
             # az webapp create --resource-group gihub-rg --name hlaingapp007 --custom-location $customLocationId --runtime 'DOTNETCORE:6.0'
-            az webapp create --resource-group github-rg --plan MyPlan1 --name MyUniqueAppName
-            
+            az webapp create --resource-group github-rg --plan MyPlan --name hlaingapp007 --runtime 'DOTNETCORE:6.0'
 
           
 
