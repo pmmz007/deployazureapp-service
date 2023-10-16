@@ -3,7 +3,7 @@ on:
   push: 
     branches: main
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
 
@@ -17,16 +17,21 @@ jobs:
       with:
           inlineScript: |
             az account list -o table
-  
-    - name: Create App Service  Plan
-      uses: azure/CLI@v1
-      with:
+
+  deploy-to-production:
+      runs-on: ubuntu-latest
+      needs: build
+      steps:
+
+      - name: Create App Service  Plan
+        uses: azure/CLI@v1
+        with:
           inlineScript: |
             az appservice plan create --name MyPlan --resource-group github-rg  --sku P0V3 --is-linux --location eastus
 
-    - name: Create App Service
-      uses: azure/CLI@v1
-      with:
+      - name: Create App Service
+        uses: azure/CLI@v1
+        with:
           inlineScript: |
             az webapp create --resource-group github-rg --plan MyPlan --name hlaingapp007 --runtime 'DOTNETCORE:6.0'
 
