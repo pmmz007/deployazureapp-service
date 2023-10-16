@@ -18,6 +18,6 @@ jobs:
 
     - name: create resource group
       run: |
-        az group create --name webserver-rg --location japaneast
+        az group list -o table | grep github-rg
 
   
